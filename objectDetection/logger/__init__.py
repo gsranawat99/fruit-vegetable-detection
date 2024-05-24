@@ -1,52 +1,20 @@
-import os.path
-import sys
-import yaml
-import base64
-
-from wasteDetection.exception import AppException
-from wasteDetection.logger import logging
+import logging
+import os
+from datetime import datetime
+from from_root import from_root
 
 
-def read_yaml_file(file_path: str) -> dict:
-    try:
-        with open(file_path, "rb") as yaml_file:
-            logging.info("Read yaml file successfully")
-            return yaml.safe_load(yaml_file)
-
-    except Exception as e:
-        raise AppException(e, sys) from e
-    
+LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 
 
+log_path = os.path.join(from_root(), 'log', LOG_FILE)
 
-def write_yaml_file(file_path: str, content: object, replace: bool = False) -> None:
-    try:
-        if replace:
-            if os.path.exists(file_path):
-                os.remove(file_path)
+os.makedirs(log_path, exist_ok=True)
 
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+lOG_FILE_PATH = os.path.join(log_path, LOG_FILE)
 
-        with open(file_path, "w") as file:
-            yaml.dump(content, file)
-            logging.info("Successfully write_yaml_file")
-
-    except Exception as e:
-        raise AppException(e, sys)
-    
-
-
-
-def decodeImage(imgstring, fileName):
-    imgdata = base64.b64decode(imgstring)
-    with open("./data/" + fileName, 'wb') as f:
-        f.write(imgdata)
-        f.close()
-
-
-def encodeImageIntoBase64(croppedImagePath):
-    with open(croppedImagePath, "rb") as f:
-        return base64.b64encode(f.read())
-
-    
-    
+logging.basicConfig(
+    filename=lOG_FILE_PATH,
+    format= "[ %(asctime)s ] %(name)s - %(levelname)s - %(message)s",
+    level= logging.INFO
+)
