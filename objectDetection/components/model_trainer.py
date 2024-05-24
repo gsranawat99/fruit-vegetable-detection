@@ -23,10 +23,10 @@ class ModelTrainer:
 
         try:
             logging.info("Unzipping data")
-            os.system("unzip data.zip")
-            os.system("rm data.zip")
+            os.system("unzip /workspaces/fruit-vegetable-detection/artifacts/data_ingestion/data.zip")
+            os.system("rm /workspaces/fruit-vegetable-detection/artifacts/data_ingestion/data.zip")
 
-            with open("data.yaml", 'r') as stream:
+            with open("/workspaces/fruit-vegetable-detection/artifacts/data_ingestion/feature_store/finaldata/data1.yaml", 'r') as stream:
                 num_classes = str(yaml.safe_load(stream)['nc'])
 
             model_config_file_name = self.model_trainer_config.weight_name.split(".")[0]
@@ -48,7 +48,7 @@ class ModelTrainer:
             os.system("rm -rf yolov9/runs")
             os.system("rm -rf train")
             os.system("rm -rf valid")
-            os.system("rm -rf data.yaml")
+            os.system("rm -rf data1.yaml")
 
             model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path="yolov9/best.pt",

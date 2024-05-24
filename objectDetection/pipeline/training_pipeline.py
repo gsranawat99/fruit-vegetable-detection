@@ -100,7 +100,7 @@ class TrainPipeline:
                 data_ingestion_artifact=data_ingestion_artifact
             )
 
-            if data_validation_artifact.validation_status == True:
+            if data_validation_artifact.validation_status == False:
                 model_trainer_artifact = self.start_model_trainer()
             
             else:
