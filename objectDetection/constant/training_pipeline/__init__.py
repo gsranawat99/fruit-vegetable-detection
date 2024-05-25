@@ -7,7 +7,7 @@ DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 
 DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
 
-DATA_DOWNLOAD_URL: str = "https://drive.google.com/file/d/16ZKe73xGbDBQ5hDTABXDGJttIVTSZhxA/view?usp=drive_link"
+DATA_DOWNLOAD_URL: str = "https://drive.google.com/file/d/1h-oWEX0ZTtH3BU5Mghueca2sJBGjmu7g/view?usp=sharing"
 
 """
 Data Validation realted contant start with DATA_VALIDATION VAR NAME
@@ -26,7 +26,7 @@ MODEL TRAINER related constant start with MODEL_TRAINER var name
 """
 MODEL_TRAINER_DIR_NAME: str = "model_trainer"
 
-MODEL_TRAINER_PRETRAINED_WEIGHT_NAME: str = "yolov9-c.pt"
+MODEL_TRAINER_PRETRAINED_WEIGHT_NAME: str = "gelan-c.pt"
 
 MODEL_TRAINER_NO_EPOCHS: int = 1
 
